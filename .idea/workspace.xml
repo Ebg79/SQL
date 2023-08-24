@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c029e04-c365-4b0d-a6fb-02792ca6f4a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/page/VerificationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/DataHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/DataHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data/SQLHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/SQLHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/page/DashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page/DashboardPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/page/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/page/VerifyPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/AuthTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/AuthTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="3c029e04-c365-4b0d-a6fb-02792ca6f4a1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +155,7 @@
       <option name="presentableId" value="Default" />
       <updated>1692527026492</updated>
       <workItem from="1692527027315" duration="10419000" />
-      <workItem from="1692697718211" duration="20855000" />
+      <workItem from="1692697718211" duration="21276000" />
     </task>
     <servers />
   </component>
