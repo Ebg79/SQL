@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c029e04-c365-4b0d-a6fb-02792ca6f4a1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/page/VerificationPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/data/DataHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/DataHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/data/SQLHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/data/SQLHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/page/DashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page/DashboardPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/page/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/page/VerifyPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/page/VerifyPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/page/VerifyPage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/test/AuthTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/AuthTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +44,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -73,7 +80,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Gradle.AppTest">
+  <component name="RunManager" selected="Gradle.AuthTest">
     <configuration name="AppTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -138,8 +145,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.AppTest" />
         <item itemvalue="Gradle.AuthTest" />
+        <item itemvalue="Gradle.AppTest" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
@@ -157,7 +164,7 @@
       <option name="presentableId" value="Default" />
       <updated>1692527026492</updated>
       <workItem from="1692527027315" duration="10419000" />
-      <workItem from="1692697718211" duration="6904000" />
+      <workItem from="1692697718211" duration="20855000" />
     </task>
     <servers />
   </component>

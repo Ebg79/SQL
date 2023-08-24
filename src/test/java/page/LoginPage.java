@@ -1,4 +1,5 @@
 package page;
+
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.google.common.base.Verify;
@@ -10,34 +11,20 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
-    @FindBy(css = "[data-test-id=login] input")
-    private SelenideElement loginField;
-    @FindBy(css = "[data-test-id=password] input")
-    private SelenideElement passwordField;
-    @FindBy(css = "[data-test-id=action-login]")
-    private SelenideElement loginButton;
+    private final SelenideElement loginField = $("[data-test-id=login] input");
+    private final SelenideElement passwordField = $("[data-test-id=password] input");
+    private final SelenideElement loginButton = $("[data-test-in=action-login]");
+    private final SelenideElement errorNotification = $("[data-test-id='error-notification']");
 
-    public void enterLogin(DataHelper.AuthInfo info) {
+    public void verifyErrorNotificationVisiblity() {
+        errorNotification.shouldBe(visible);
+    }
+
+    public VerificationPage validLogin(DataHelper.AuthInfo info) {
         loginField.setValue(info.getLogin());
-    }
-
-    public void enterPassword(DataHelper.AuthInfo info) {
-        passwordField.sendKeys(Keys.SHIFT, Keys.HOME);
-        passwordField.sendKeys(Keys.DELETE);
         passwordField.setValue(info.getPassword());
-    }
-
-    public VerifyPage confirmAuth() {
         loginButton.click();
-        return Selenide.page(VerifyPage.class);
-    }
+        return new VerificationPage();
 
-    public void confirmNotAuth() {
-        loginButton.click();
-        $(".notification_visible").shouldBe(visible);
-    }
-
-    public void checkSystemBlocked() {
-        passwordField.shouldNotBe(visible);
     }
 }

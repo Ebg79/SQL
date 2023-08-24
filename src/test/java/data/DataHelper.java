@@ -1,73 +1,45 @@
 package data;
-import lombok.Value;
-import lombok.val;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import com.github.javafaker.Faker;
+import lombok.Value;
+
+import java.util.Locale;
+
 
 public class DataHelper {
+    private static final Faker faker = new Faker(new Locale("en"));
+
     private DataHelper() {
+    }
+
+    public static AuthInfo getAuthInfoWithTestData() {
+        return new AuthInfo("vany", "qwerty123");
+    }
+
+    private static String generateRandomLogin() {
+        return faker.name().username();
+    }
+
+    private static String generateRandomPassword() {
+        return faker.internet().password();
+    }
+
+    public static AuthInfo generateRandomUser() {
+        return new AuthInfo(generateRandomLogin(), generateRandomPassword());
+    }
+
+    public static VerificationCode generateRandomVerificationCode() {
+        return new VerificationCode(faker.numerify("########"));
     }
 
     @Value
     public static class AuthInfo {
-        private String login;
-        private String password;
-    }
-
-    public static AuthInfo getAuthInfo() {
-        return new AuthInfo("vasya", "qwerty123");
-    }
-
-    public static AuthInfo getWrongAuthInfo() {
-        return new AuthInfo("vasya", "123qwerty");
+        String login;
+        String password;
     }
 
     @Value
     public static class VerificationCode {
-        private String code;
-    }
-
-    public static VerificationCode getVerificationCodeFor() {
-        val codeSQL = "SELECT code FROM auth_codes INNER JOIN users ON auth_codes.user_id = users.id;";
-        val runner = new QueryRunner();
-        String code = "";
-
-        try (
-                val conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
-        ) {
-            code = runner.query(conn, codeSQL, new ScalarHandler<>());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return new VerificationCode(code);
-    }
-
-    public static void clearCodeAuth() throws SQLException {
-        val codeSQL = "DELETE FROM auth_codes;";
-        val runner = new QueryRunner();
-        try (
-                val conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
-        ) {
-            runner.update(conn, codeSQL);
-        }
-    }
-
-    public static void clearDB() throws SQLException {
-        val codeSQL = "DELETE FROM users;";
-        val codeSQL2 = "DELETE FROM cards;";
-        val runner = new QueryRunner();
-        try (
-                val conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app", "app", "pass");
-        ) {
-            runner.update(conn, codeSQL2);
-            runner.update(conn, codeSQL);
-        }
-    }
-
-    public static VerificationCode getVerificationWrongCode() {
-        return new VerificationCode("12345");
+        String code;
     }
 }

@@ -1,7 +1,10 @@
 package test;
+
+import data.SQLHelper;
 import lombok.val;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import data.DataHelper;
 import page.LoginPage;
@@ -9,41 +12,45 @@ import page.LoginPage;
 import java.sql.SQLException;
 
 import static com.codeborne.selenide.Selenide.open;
+import static data.SQLHelper.cleanDatabase;
 
-class AppTest {
+class AuthTest {
 
     @AfterAll
-    static void clearDB() throws SQLException {
-        DataHelper.clearDB();
+    static void teardown() {
+        cleanDatabase();
     }
 
-    @AfterEach
-    void tearDown() throws SQLException {
-        DataHelper.clearCodeAuth();
+
+    @Test
+    @DisplayName("")
+    void shouldSuccessfulLogin() {
+        var loginPage = open("http://localhost:9999", LoginPage.class);
+        var authInfo = DataHelper.getAuthInfoWithTestData();
+        var verificationPage = loginPage.validLogin(authInfo);
+        verificationPage.verifiVerificationPageVisiblity();
+        var verificationCode = SQLHelper.getVerificationCode();
+        verificationPage.validVerify(verificationCode.getCode());
     }
 
     @Test
-    void shouldAuth() {
-        val loginPage = open("http://localhost:9999", LoginPage.class);
-        val authInfo = DataHelper.getAuthInfo();
-        loginPage.enterLogin(authInfo);
-        loginPage.enterPassword(authInfo);
-        val verificationPage = loginPage.confirmAuth();
-        val verificationCode = DataHelper.getVerificationCodeFor();
-        verificationPage.validVerify(verificationCode);
+    @DisplayName("")
+    void shouldGetErrorNotificationIfLoginWithRandomUser() {
+        var loginPage = open("http//localhost:9999", LoginPage.class);
+        var authInfo = DataHelper.generateRandomUser();
+        loginPage.validLogin(authInfo);
+        loginPage.verifyErrorNotificationVisiblity();
     }
 
     @Test
-    void shouldBlockAuth() {
-        val loginPage = open("http://localhost:9999", LoginPage.class);
-        val authInfo = DataHelper.getWrongAuthInfo();
-        loginPage.enterLogin(authInfo);
-        loginPage.enterPassword(authInfo);
-        loginPage.confirmNotAuth();
-        loginPage.enterPassword(authInfo);
-        loginPage.confirmNotAuth();
-        loginPage.enterPassword(authInfo);
-        loginPage.confirmNotAuth();
-        loginPage.checkSystemBlocked();
+    @DisplayName("")
+    void shouldGetErrorNotificationIfLoginWithExistUserAndRandomVerificationCode() {
+        var loginPage = open("http://localhost:9999", LoginPage.class);
+        var authInfo = DataHelper.getAuthInfoWithTestData();
+        var verificationPage = loginPage.validLogin(authInfo);
+        verificationPage.verifiVerificationPageVisiblity();
+        var verificationCode = DataHelper.generateRandomVerificationCode();
+        verificationPage.verify(verificationCode.getCode());
+        verificationPage.verifiVerificationPageVisiblity();
     }
 }
